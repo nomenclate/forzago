@@ -2,29 +2,34 @@ package forzago
 
 import "sync"
 
-type inputter interface {
+type Queue interface {
+	Enqueue(data []byte)
+	Dequeue() ([]byte, bool)
+}
+
+type Inputter interface {
 	StartAccepting(q Queue)
 }
 
-type outputter interface {
+type Outputter interface {
 	StartOutputting(q Queue)
 }
 
-type DataIn struct {
-	i  inputter
+type Pipeline struct {
+	i  Inputter
 	q  Queue
-	o  outputter
+	o  Outputter
 	wg *sync.WaitGroup
 }
 
-func (p *DataIn) Start() {
+func (p *Pipeline) Start() {
 	go p.i.StartAccepting(p.q)
 	go p.o.StartOutputting(p.q)
 	p.wg.Wait()
 }
 
-func NewDataIn(i inputter, q Queue, o outputter) *DataIn {
+func NewDataIn(i Inputter, q Queue, o Outputter) *Pipeline {
 	var wg sync.WaitGroup
 	wg.Add(1)
-	return &DataIn{i: i, q: q, o: o, wg: &wg}
+	return &Pipeline{i: i, q: q, o: o, wg: &wg}
 }
