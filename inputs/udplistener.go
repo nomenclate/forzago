@@ -1,8 +1,10 @@
-package forzago
+package inputs
 
 import (
 	"fmt"
 	"net"
+
+	"github.com/nomenclate/forzago"
 )
 
 type UdpListener struct {
@@ -13,7 +15,7 @@ func NewUdpListener(port int) *UdpListener {
 	return &UdpListener{port: port}
 }
 
-func (l *UdpListener) StartAccepting(q Queue) {
+func (l *UdpListener) StartAccepting(q forzago.Queue) {
 	fmt.Printf("Starting UDP listening on port %d\n", l.port)
 
 	addr, err := net.ResolveUDPAddr("udp", fmt.Sprintf(":%d", l.port))
