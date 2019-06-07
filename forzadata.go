@@ -10,21 +10,21 @@ type outputter interface {
 	StartOutputting(q Queue)
 }
 
-type ForzaDataIn struct {
+type DataIn struct {
 	i  inputter
 	q  Queue
 	o  outputter
 	wg *sync.WaitGroup
 }
 
-func (p *ForzaDataIn) Start() {
+func (p *DataIn) Start() {
 	go p.i.StartAccepting(p.q)
 	go p.o.StartOutputting(p.q)
 	p.wg.Wait()
 }
 
-func NewForzaDataIn(i inputter, q Queue, o outputter) *ForzaDataIn {
+func NewDataIn(i inputter, q Queue, o outputter) *DataIn {
 	var wg sync.WaitGroup
 	wg.Add(1)
-	return &ForzaDataIn{i: i, q: q, o: o, wg: &wg}
+	return &DataIn{i: i, q: q, o: o, wg: &wg}
 }

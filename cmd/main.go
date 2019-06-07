@@ -11,7 +11,7 @@ func main() {
 	i := inputs.NewUdpListener(2323)
 	q := forzago.NewChannelQueue()
 	o := &outputs.StdoutOutputter{}
-	p := forzago.NewForzaDataIn(i, q, o)
+	p := forzago.NewDataIn(i, q, o)
 
 	p.Start()
 }
