@@ -12,7 +12,7 @@ func main() {
 	i := inputs.NewUdpListener(net.ParseIP("10.0.1.172"), 2323)
 	q := forzago.NewChannelQueue()
 	o := &outputs.StdoutOutputter{}
-	p := forzago.NewDataIn(i, q, o)
+	p := forzago.NewPipeline(i, q, o)
 
 	p.Start()
 }
