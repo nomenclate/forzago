@@ -5,8 +5,10 @@ import (
 	"encoding/binary"
 )
 
-// DataOutPacket describes the format used for data out in Forza
-// data on format of packets is from the following post on the forzamotorsport forums
+// DataOutPacket describes the format used for the DataOut feature in
+// Forza. information on the format of packets is from the following
+// can be found the follow post on the forzamotorsport forums:
+//
 // https://forums.forzamotorsport.net/turn10_postsm926839_Forza-Motorsport-7--Data-Out--feature-details.aspx#post_926839
 type DataOutPacket struct {
 	IsRaceOn    int32  // 1 if race is running, 0 when in menu/race stopped
