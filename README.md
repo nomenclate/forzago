@@ -11,7 +11,7 @@ https://forums.forzamotorsport.net/turn10_postsm926839_Forza-Motorsport-7--Data-
 
 There are three main components in forzago, inputters, outputters, and queues.  
 
-Inputter place a []bytes represeenting a single forza dataout back onto the queue to be later removed and dealt with as appropriate by an Outputter.
+Inputters place a []bytes represeenting a single forza dataout back onto the queue to be later removed and dealt with as appropriate by an Outputter.  Queues provide a middle ground for the exchange.
 
 Forzago was intended to allow for mixing and match of differnt inputters (i.e. from network, from file etc.) and outputters (i.d. StdOut, Json, influx line protocol). 
 
