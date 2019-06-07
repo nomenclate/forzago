@@ -8,11 +8,12 @@ import (
 )
 
 type UdpListener struct {
-	port int
+	dataOutSrc net.IP
+	port       int
 }
 
-func NewUdpListener(port int) *UdpListener {
-	return &UdpListener{port: port}
+func NewUdpListener(ip net.IP, port int) *UdpListener {
+	return &UdpListener{dataOutSrc: ip, port: port}
 }
 
 func (l *UdpListener) StartAccepting(q forzago.Queue) {
@@ -32,7 +33,10 @@ func (l *UdpListener) StartAccepting(q forzago.Queue) {
 	buf := make([]byte, 1024)
 
 	for {
-		n, _, err := conn.ReadFromUDP(buf)
+		n, addr, err := conn.ReadFromUDP(buf)
+		if !addr.IP.Equal(l.dataOutSrc) {
+			break
+		}
 		if err != nil {
 			fmt.Println("Error: ", err)
 		}
