@@ -9,7 +9,7 @@ Info on forzadataout can be found in the following forum post:
 https://forums.forzamotorsport.net/turn10_postsm926839_Forza-Motorsport-7--Data-Out--feature-details.aspx#post_926839
 
 
-There are three main components in forza data, inputters, outputters, and queues.  
+There are three main components in forzago, inputters, outputters, and queues.  
 
 Inputter place a []bytes represeenting a single forza dataout back onto the queue to be later removed and dealt with as appropriate by an Outputter.
 
