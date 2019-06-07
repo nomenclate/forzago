@@ -1,9 +1,5 @@
 package forzago
 
-type Queue interface {
-	Enqueue(data []byte)
-	Dequeue() ([]byte, bool)
-}
 type ChannelQueue struct {
 	c chan []byte
 }
