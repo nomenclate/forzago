@@ -1,15 +1,15 @@
 package main
 
 import (
-	"github.com/nomenclate/forzadata"
+	"github.com/nomenclate/forzago"
 )
 
 func main() {
 
-	i := forzadata.NewUdpListener(2323)
-	q := forzadata.NewChannelQueue()
-	o := &forzadata.StdoutOutputter{}
-	p := forzadata.NewForzaDataIn(i, q, o)
+	i := forzago.NewUdpListener(2323)
+	q := forzago.NewChannelQueue()
+	o := &forzago.StdoutOutputter{}
+	p := forzago.NewForzaDataIn(i, q, o)
 
 	p.Start()
 }
