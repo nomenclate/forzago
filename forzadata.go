@@ -28,7 +28,7 @@ func (p *Pipeline) Start() {
 	p.wg.Wait()
 }
 
-func NewDataIn(i Inputter, q Queue, o Outputter) *Pipeline {
+func NewPipeline(i Inputter, q Queue, o Outputter) *Pipeline {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	return &Pipeline{i: i, q: q, o: o, wg: &wg}
