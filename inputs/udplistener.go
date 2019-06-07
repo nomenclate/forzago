@@ -1,4 +1,4 @@
-package forzago
+package inputs
 
 import (
 	"fmt"
