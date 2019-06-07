@@ -12,8 +12,8 @@ type UdpListener struct {
 	port       int
 }
 
-func NewUdpListener(port int) *UdpListener {
-	return &UdpListener{port: port}
+func NewUdpListener(ip net.IP, port int) *UdpListener {
+	return &UdpListener{dataOutSrc: ip, port: port}
 }
 
 func (l *UdpListener) StartAccepting(q forzago.Queue) {
